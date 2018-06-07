@@ -1,0 +1,20 @@
+{
+    "name": "daniel/public_html",
+    "description": "solr",
+    "require": {
+        "ptcinc/solr-php-client": "1",
+        "slim/slim": "^3.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lib\\":"Lib/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel luo",
+            "email": "luo3555@qq.com"
+        }
+    ]
+}
