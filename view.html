@@ -32,13 +32,13 @@
           <span class="hidden-nav-xs m-l-sm">返回目录</span>
         </a>
       </div>   
-    </header>  
+    </header>
+<div id="main-image">
   <div class="container-fluid no-padding">
       <div class="img-container">
-
-        <img id="main-image" class="img-responsive center-block" style="display:none" src="#" alt="...">
+        <img class="img-responsive center-block" ref="loadImage" v-show="display" :src="image" :alt="title">
 &nbsp;
-<div class="sk-circle">
+<div class="sk-circle" v-show="!display">
   <div class="sk-circle1 sk-child"></div>
   <div class="sk-circle2 sk-child"></div>
   <div class="sk-circle3 sk-child"></div>
@@ -54,48 +54,37 @@
 </div>
 &nbsp;
 
-
       </div>
   </div>
 
   <div class="container">
     <div class="text-center">
-      <a id="prev" href="#" data-page="0" class="btn btn-default btn-xs"> <i class="fa fa-chevron-circle-left"></i></a>
+      <a id="prev" href="#" @click="prev" class="btn btn-default btn-xs"> <i class="fa fa-chevron-circle-left"></i></a>
       <a href="#" class="btn btn-default btn-xs">&nbsp;</a>
-      <a id="next" href="#" data-page="0" class="btn btn-default btn-xs"><i class="fa fa-chevron-circle-right"></i></a>
+      <a id="next" href="#" @click="next" class="btn btn-default btn-xs"><i class="fa fa-chevron-circle-right"></i></a>
     </div>
   </div>
+</div>
 
 
-  <script src="js/jquery.min.js"></script>
+  <!-- <script src="js/jquery.min.js"></script> -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
   <!-- Bootstrap -->
   <script src="js/bootstrap.js"></script>
   <!-- App -->
   <script src="js/app.js"></script>  
   <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
   <script src="js/app.plugin.js"></script>
-  <script src="js/comic.js"></script>
-  <script type="text/javascript">
-jQuery(function(){
-  comic.viewPageRun();
-// comic.imgLoadCheck(jQuery('.img-container img'));
-// function checkImage($image)
-// {
-//   comic.imgLoadCheck($image);
-// }
-// checkImage(jQuery('.img-container img'));
 
-// function hideLoading(mode)
-// {
-//     if (mode) {
-//         jQuery('.sk-circle').fadeOut();
-//     } else {
-//         jQuery('.sk-circle').fadeIn();
-//     }
-// }
 
-});
-
-  </script>
+  <script src="js/solr/lib/Core.js"></script>
+  <script src="js/solr/lib/AbstractManager.js"></script>
+  <script src="js/solr/lib/Manager.jquery.js"></script>
+  <script src="js/solr/lib/Parameter.js"></script>
+  <script src="js/solr/lib/ParameterStore.js"></script>
+  <script src="js/solr/lib/AbstractWidget.js"></script>
+  <script src="js/solr/widgets/ViewWidget.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/solr/page/view.js"></script>
 </body>
 </html>

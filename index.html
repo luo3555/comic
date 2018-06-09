@@ -165,10 +165,10 @@
                   </span></h2>
                   <div id="content-list" class="row row-sm">
 
-                    <div v-for="(item, index) in items" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                    <div v-for="(item, index) in docs" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                       <div class="item">
                         <div class="pos-rlt">
-                            <a :href="'/chapter.html?num='+item.number"><img :src="item.image" :alt="item.title" class="r r-2x img-full a-block"></a>
+                            <a :href="'/chapter.html?num='+item.number"><img :src="item.images[0]" :alt="item.title" class="r r-2x img-full a-block"></a>
                         </div>
                         <div class="padder-v">
                           <p class="text-muted">{{item.title}}<br/>{{item.title}}</p>
@@ -202,24 +202,24 @@
       </section>
     </section>    
   </section>
-  <script src="js/jquery.min.js"></script>
+  <!-- <script src="js/jquery.min.js"></script> -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
   <!-- Bootstrap -->
   <script src="js/bootstrap.js"></script>
   <!-- App -->
   <script src="js/app.js"></script>
   <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
   <script src="js/app.plugin.js"></script>
-  <script src="js/comic.js"></script>
-  <script type="text/javascript">
-jQuery(function(){
-  // var data = window.localStorage.getItem('list');
-  jQuery.getJSON('/api.php', function(responseData) {
-    // 如果有缓存了就不请求了
-    console.log(responseData);
-    comic.index(responseData).run();
-  });
-});
+  
+  <script src="js/solr/lib/Core.js"></script>
+  <script src="js/solr/lib/AbstractManager.js"></script>
+  <script src="js/solr/lib/Manager.jquery.js"></script>
+  <script src="js/solr/lib/Parameter.js"></script>
+  <script src="js/solr/lib/ParameterStore.js"></script>
+  <script src="js/solr/lib/AbstractWidget.js"></script>
+  <script src="js/solr/widgets/IndexWidget.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/solr/page/index.js"></script>
 
-  </script>
 </body>
 </html>
