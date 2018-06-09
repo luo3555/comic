@@ -1,12 +1,11 @@
-// var Chapter;
+var Chapter;
 
 (function ($) {
 
   $(function () {
-    Chapter = Manager;
-    // Chapter = new AjaxSolr.Manager({
-    //   solrUrl: 'http://solr.cloyi.com/solr/manga/'
-    // });
+    Chapter = new AjaxSolr.Manager({
+      solrUrl: 'http://solr.cloyi.com/solr/manga/'
+    });
     Chapter.addWidget(new AjaxSolr.ChapterListWidget({
       id: 'result',
       target: '#docs'
