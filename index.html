@@ -210,7 +210,7 @@
   <script src="js/app.js"></script>
   <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
   <script src="js/app.plugin.js"></script>
-  
+<!--
   <script src="js/solr/lib/Core.js"></script>
   <script src="js/solr/lib/AbstractManager.js"></script>
   <script src="js/solr/lib/Manager.jquery.js"></script>
@@ -220,6 +220,17 @@
   <script src="js/solr/widgets/IndexWidget.js"></script>
   <script src="js/common.js"></script>
   <script src="js/solr/page/index.js"></script>
-
+-->
+<script type="text/javascript">
+jQuery(function(){
+  jQuery.getJSON('/api.php', {home:1}, function(response){
+    console.log(response);
+    new Vue({
+      el: '#content-list',
+      data: response
+    });
+  });
+});
+</script>
 </body>
 </html>

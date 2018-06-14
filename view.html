@@ -77,7 +77,7 @@
   <script src="js/app.plugin.js"></script>
 
 
-  <script src="js/solr/lib/Core.js"></script>
+<!--   <script src="js/solr/lib/Core.js"></script>
   <script src="js/solr/lib/AbstractManager.js"></script>
   <script src="js/solr/lib/Manager.jquery.js"></script>
   <script src="js/solr/lib/Parameter.js"></script>
@@ -85,6 +85,61 @@
   <script src="js/solr/lib/AbstractWidget.js"></script>
   <script src="js/solr/widgets/ViewWidget.js"></script>
   <script src="js/common.js"></script>
-  <script src="js/solr/page/view.js"></script>
+  <script src="js/solr/page/view.js"></script> -->
+  <script src="js/common.js"></script>
+  <script type="text/javascript">
+  jQuery(function(){
+    jQuery.getJSON('/api.php', {view:1, num: comic.getQueryString('num'), chapter_num: comic.getQueryString('chapter')}, function(response){
+      chapter = response.docs[0];
+      // console.log(response);
+
+      new Vue({
+        el: '#main-image',
+        data: {
+          number: chapter.number,
+          title: chapter.title,
+          total: chapter.images.length,
+          images: chapter.images,
+          image: chapter.images[0],
+          idx: 0,
+          display: false
+        },
+        mounted: function()
+        {
+          var self  = this;
+          var timer = setInterval(function() {
+              if (self.$refs.loadImage.complete) {
+                  self.display = true;
+              } else {
+                self.display = false;
+              }
+            }, 100);
+        },
+        methods: {
+          prev: function()
+          {
+              this.display = false;
+              this.idx = this.idx - 1;
+              if (this.idx<0) {
+                  this.idx = 0;   
+              }
+              this.image = this.images[this.idx];
+          },
+          next: function()
+          {
+              this.display = false;
+              this.idx = this.idx + 1;
+              if (this.idx>(this.total-1)) {
+                  // this.idx = (this.total-1);
+                  window.location.href='/chapter.html?num=' + this.number;
+              }
+              this.image = this.images[this.idx];
+
+          }
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>

@@ -167,7 +167,11 @@
                           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <img class="img-responsive" :src="docs[0].images[0]" :alt="docs[0].title">
                           </div>
-                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><h3>{{docs[0].title}}</h3></div>
+                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <h3>{{docs[0].title}}</h3><br/>
+                            <strong>作者: {{docs[0].author}}</strong><br/>
+                            <strong>描述:</strong><p>{{docs[0].description}}</p>
+                          </div>
                         </div>
                       </li>
                       
@@ -244,7 +248,7 @@
   <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
   <script src="js/app.plugin.js"></script>
 
-  <script src="js/solr/lib/Core.js"></script>
+<!--   <script src="js/solr/lib/Core.js"></script>
   <script src="js/solr/lib/AbstractManager.js"></script>
   <script src="js/solr/lib/Manager.jquery.js"></script>
   <script src="js/solr/lib/Parameter.js"></script>
@@ -254,6 +258,23 @@
   <script src="js/solr/widgets/ChapterListWidget.js"></script>
   <script src="js/common.js"></script>
   <script src="js/solr/page/chapter/info.js"></script>
-  <script src="js/solr/page/chapter/list.js"></script>
+  <script src="js/solr/page/chapter/list.js"></script> -->
+  <script src="js/common.js"></script>
+  <script type="text/javascript">
+  jQuery(function(){
+    jQuery.getJSON('/api.php', {chapter:1, list:0, num: comic.getQueryString('num')}, function(response){
+      new Vue({
+        el: '#chapter-desc',
+        data: response
+      });
+    });
+    jQuery.getJSON('/api.php', {chapter:1, list:1, num: comic.getQueryString('num')}, function(response){
+      new Vue({
+        el: '#chapter-list',
+        data: response
+      });
+    });
+  });
+  </script>
 </body>
 </html>

@@ -1,12 +1,12 @@
-var Manager;
+// var Manager;
 
-(function ($) {
-  $(function () {
-    Manager = new AjaxSolr.Manager({
-      solrUrl: 'http://solr.cloyi.com/solr/manga/'
-    });
-  });
-})(jQuery);
+// (function ($) {
+//   $(function () {
+//     Manager = new AjaxSolr.Manager({
+//       solrUrl: '/api.php/'
+//     });
+//   });
+// })(jQuery);
 
 var comic = {
     options: {},
