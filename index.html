@@ -223,7 +223,7 @@
 -->
 <script type="text/javascript">
 jQuery(function(){
-  jQuery.getJSON('/api.php', {home:1}, function(response){
+  jQuery.getJSON('/api.php', {pt:'home'}, function(response){
     console.log(response);
     new Vue({
       el: '#content-list',

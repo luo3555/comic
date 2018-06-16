@@ -89,7 +89,7 @@
   <script src="js/common.js"></script>
   <script type="text/javascript">
   jQuery(function(){
-    jQuery.getJSON('/api.php', {view:1, num: comic.getQueryString('num'), chapter_num: comic.getQueryString('chapter')}, function(response){
+    jQuery.getJSON('/api.php', {pt:'view', num: comic.getQueryString('num'), chapter: comic.getQueryString('chapter')}, function(response){
       chapter = response.docs[0];
       // console.log(response);
 

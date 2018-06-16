@@ -262,13 +262,13 @@
   <script src="js/common.js"></script>
   <script type="text/javascript">
   jQuery(function(){
-    jQuery.getJSON('/api.php', {chapter:1, list:0, num: comic.getQueryString('num')}, function(response){
+    jQuery.getJSON('/api.php', {pt:'chapter', list:0, num: comic.getQueryString('num')}, function(response){
       new Vue({
         el: '#chapter-desc',
         data: response
       });
     });
-    jQuery.getJSON('/api.php', {chapter:1, list:1, num: comic.getQueryString('num')}, function(response){
+    jQuery.getJSON('/api.php', {pt:'chapter', list:1, num: comic.getQueryString('num')}, function(response){
       new Vue({
         el: '#chapter-list',
         data: response

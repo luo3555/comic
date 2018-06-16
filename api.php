@@ -1,6 +1,4 @@
 <?php
-
-// http://solr-app-solr.193b.starter-ca-central-1.openshiftapps.com/solr/nice2_index/select?q=*:*
 header('Content-Type:application/json');
 header('Accept-Encoding:gzip');
 
@@ -25,37 +23,45 @@ function debug($string, $mod=false)
     }
 }
 
-$solrUrl = 'http://openshift-solr-solr.193b.starter-ca-central-1.openshiftapps.com/solr/nice2_index/select?';
+
+$access = true;
 $pageSize = 30;
-$homePage = get('home');
+$pageNumber = get('page', 0);
+$pageType = get('pt');
+$number = get('num');
 $chapter = get('chapter');
-$view = get('view');
-$page = get('page', 0);
 $condition = '';
+switch ($pageType) {
+    case 'home':
+        $condition = sprintf('q=*:*&rows=%d&start=%d&fq=type:article&fl=id&fl=title&fl=images&fl=number', $pageSize, $pageNumber);
+        break;
+    case 'chapter':
+        $list = get('list');
 
-if ($homePage) {
-    $condition = sprintf('q=*:*&rows=%d&start=%d&fq=type:article&fl=id&fl=title&fl=images&fl=number', $pageSize, $page);
+        if ($list) {
+            $condition = sprintf('q=*:*&fl=id&fl=title&fl=number&fl=chapter&fq=type:chapter&fq=number:%d', $number);
+        } else {
+            $condition = sprintf('q=*:*&rows=1&start=0&fl=id&fl=title&fl=images&fl=number&fl=author&fl=description&fq=type:article&fq=number:%d', $number);
+        }
+        break;
+    case 'view':
+        $condition = sprintf('q=*:*&fl=id&fl=title&fl=number&fl=chapter&fl=images&fq=type:chapter&fq=number:%d&fq=chapter:%d', $number, $chapter);
+        break;
+    
+    default:
+        $access = false;
+        break;
 }
 
-if ($chapter) {
-    $number = get('num');
-    $list = get('list');
-
-    if ($list) {
-        $condition = sprintf('q=*:*&fl=id&fl=title&fl=number&fl=chapter&fq=type:chapter&fq=number:%d', $number);
-    } else {
-        $condition = sprintf('q=*:*&rows=1&start=1&fl=id&fl=title&fl=images&fl=number&fl=author&fl=description&fq=type:article&fq=number:%d', $number);
-    }
+if (!$access) {
+    header("HTTP/1.1 404 Not Found!");
+    $data['code'] = 404;
+    echo json_encode($data);
+    exit;
 }
 
-if ($view) {
-    $number = get('num');
-    $chapter = get('chapter_num');
-    $condition = sprintf('q=*:*&fl=id&fl=title&fl=number&fl=chapter&fl=images&fq=type:chapter&fq=number:%d&fq=chapter:%d', $number, $chapter);
-}
 
-//debug($condition);
-
+$solrUrl = 'http://openshift-solr-solr.193b.starter-ca-central-1.openshiftapps.com/solr/nice2_index/select?';
 $requestUrl = $solrUrl . $condition;
 $response = '';
 
