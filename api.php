@@ -25,7 +25,7 @@ function debug($string, $mod=false)
     }
 }
 
-$solrUrl = 'http://solr-app-solr.193b.starter-ca-central-1.openshiftapps.com/solr/nice2_index/select?';
+$solrUrl = 'http://openshift-solr-solr.193b.starter-ca-central-1.openshiftapps.com/solr/nice2_index/select?';
 $pageSize = 30;
 $homePage = get('home');
 $chapter = get('chapter');
