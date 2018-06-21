@@ -1,0 +1,83 @@
+          <section class="vbox">
+          <section class="w-f-md">
+            <section class="hbox stretch dker">
+              <!-- side content -->
+              <aside class="col-sm-5 no-padder" id="sidebar">
+                <br/>
+                <section class="vbox animated fadeInUp">
+                  <section class="scrollable container">
+                    <ul id="chapter-desc" class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+
+                      <li  class="list-group-item col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="m-t-n-xxs item pos-rlt">
+                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <img class="img-responsive" :src="images[0]" :alt="title">
+                          </div>
+                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <h3>{{title}}</h3><br/>
+                            <strong>作者: {{author}}</strong><br/>
+                            <strong>描述:</strong><p>{{description}}</p>
+                          </div>
+                        </div>
+                      </li>
+                      
+                    </ul>
+
+                    <ul id="chapter-list" class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+
+
+
+                      <li v-for="(item, index) in docs" class="list-group-item col-xs-6 col-sm-6 col-md-  col-lg-3">
+                        <a :href="'/content/view.php?n=' + item.number + '&c=' + item.chapter" class="btn btn-default btn-xs">{{item.title}}</a>
+                      </li>
+
+                      
+                    </ul>
+                  </section>
+                </section>
+              </aside>
+              <!-- / side content -->
+              <section class="col-sm-3 no-padder lt">
+                <section class="vbox">
+                  <section class="scrollable hover">
+<!--
+                    <div class="m-t-n-xxs">
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                          <span class="block h3 font-bold text-info">Find</span>
+                          <span class="text-muted">Search the music you like</span>
+                          <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                        </a>
+                        <a href="#">
+                          <img class="img-responsive center-block" style="max-height: 200px;" src="//timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527923876404&di=e6b8842d28a0d0041188c6b798c00871&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201411%2F27%2F20141127070355_tsWvH.jpeg" alt="...">
+                        </a>
+                      </div>
+                      <div class="item pos-rlt">
+                        <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                          <span class="block h3 font-bold text-info">Find</span>
+                          <span class="text-muted">Search the music you like</span>
+                          <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                        </a>
+                        <a href="#">
+                          <img class="img-responsive center-block" style="max-height: 200px;" src="//timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527923876404&di=e6b8842d28a0d0041188c6b798c00871&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201411%2F27%2F20141127070355_tsWvH.jpeg" alt="...">
+                        </a>
+                      </div>
+                    </div>
+-->
+                  </section>
+                </section>
+              </section>
+            </section>
+          </section>
+                <footer class="footer bg-dark">
+                  <div id="jp_container_N">
+                    <div class="jp-type-playlist">
+                      <div id="jplayer_N" class="jp-jplayer hide"></div>
+                      <div class="jp-gui">
+                        <!-- footer info -->
+                      </div>
+
+                    </div>
+                  </div>
+                </footer>
+        </section>

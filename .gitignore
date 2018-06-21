@@ -1,3 +1,7 @@
 /vendor/*
-.DS_Store
-
+/content/*.html
+/cache/*
+/index.html
+/.DS_Store
+/.idea/
+/composer.lock
