@@ -3,7 +3,10 @@ namespace Lib;
 
 class Search extends \Lib\Object
 {
-    const SOLR_URL = 'http://openshift-solr-solr.193b.starter-ca-central-1.openshiftapps.com/solr/nice2_index/select?';
+    /**
+     * GET FROM config.php
+     */
+    const SEARCH_URL = '';
 
     protected $_response;
 
@@ -72,7 +75,7 @@ class Search extends \Lib\Object
             $conditions[] = 'q=*:*';
         }
 
-        $requestUrl = self::SOLR_URL;
+        $requestUrl = SEARCH_URL;
 
         if (!empty($conditions)) {
             $requestUrl .= implode('&', $conditions);

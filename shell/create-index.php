@@ -19,6 +19,7 @@ $tpl->reset();
 
 // 2. header, logo and so on....
 $tpl->setFile('common/header.html');
+$tpl->setVar(['web_title' => WEB_TITLE]);
 $layout['header'] = $tpl->render();
 $tpl->reset();
 
