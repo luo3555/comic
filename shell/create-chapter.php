@@ -64,7 +64,7 @@ foreach ($articles as $article) {
 // 6. init script
 // get init data
     $search->setFields(['id', 'title', 'number', 'chapter', 'images']);
-    $search->setFilter('type', 'article');
+    $search->setFilter('type', 'chapter');
     $search->setFilter('number', $article['number']);
     $search->execute();
 
