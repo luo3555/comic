@@ -13,7 +13,7 @@ $tpl = new Lib\Template();
 
 // 1. set head
 $tpl->setFile('index/head.html');
-$tpl->setVar(['title' => 'Cloyi Comic', 'baseUrl' => BASE_URL]);
+$tpl->setVar(['title' => WEB_TITLE, 'baseUrl' => BASE_URL]);
 $layout['head'] = $tpl->render();
 $tpl->reset();
 
